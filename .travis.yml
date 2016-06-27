@@ -19,5 +19,5 @@ branches:
 
 after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker build -t holmes89/religious-api .
-  - docker push holmes89/religious-api
+  - docker build -t holmes89/religious-calendar-api .
+  - docker push holmes89/religious-calendar-api
