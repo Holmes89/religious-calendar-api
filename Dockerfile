@@ -1,9 +1,7 @@
-# Pull base image
-From tomcat:8-jre8
-
+FROM java:8
+VOLUME /tmp
 # Maintainer
 MAINTAINER "Joel Holmes <Holmes89@gmail.com>"
-
-# Copy to images tomcat path
-COPY sacred-text-api/target/sacred-text-api-*.war /usr/local/tomcat/webapps/sacred-text-api.war
-COPY religious-calendar-api/target/religious-calendar-api-*.war /usr/local/tomcat/webapps/religious-calendar-api.war
+ADD target/religious-calendar-api*.jar religious-calendar-api.jar
+RUN bash -c 'touch /religious-calendar-api.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/religious-calendar-api.jar"]
